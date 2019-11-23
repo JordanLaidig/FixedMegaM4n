@@ -8,7 +8,7 @@ public class JohnsonPlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2d;
-    public Health health;
+    Health health;
     JohnsonBar bar;
     Transform direction;
 
@@ -28,9 +28,6 @@ public class JohnsonPlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        bar.game.JohnsonHP = health.getHealth();
-        print(bar.game.JohnsonHP.ToString());
-
         if (Input.GetKey("h"))
         {
             transform.eulerAngles = new Vector3(0, 0, 0);

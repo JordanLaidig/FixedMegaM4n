@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
 {
     public CameraController cam;
     public int health;
-    private int maxHealth = 100;
+    public int maxHealth = 100;
 
     private void Start()
     {
