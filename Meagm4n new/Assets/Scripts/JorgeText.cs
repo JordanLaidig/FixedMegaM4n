@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextHP : MonoBehaviour
+public class JorgeText : MonoBehaviour
 {
     public static int JorgeTextHP = 100;
-    Text JorgeText;
+    Text JorgeT;
     GameManager game;
     // Start is called before the first frame update
     void Start()
     {
-        JorgeText = GetComponent<Text>();
+        JorgeT = GetComponent<Text>();
     }
    
     // Update is called once per frame
     void FixedUpdate()
     {
-        JorgeText.text = game.JorgeHP.ToString();
+        JorgeT.text = game.JorgeHP.ToString();
     }
 }

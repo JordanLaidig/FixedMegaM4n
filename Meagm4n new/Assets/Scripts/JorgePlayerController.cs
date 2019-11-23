@@ -11,6 +11,7 @@ public class JorgePlayerController : MonoBehaviour
     JorgeBar bar;
     Health health;
     Transform direction;
+    GameManager game;
 
     bool grounded = true;
     bool onWall = false;
@@ -24,7 +25,6 @@ public class JorgePlayerController : MonoBehaviour
         direction = GetComponent<Transform>();
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
 
@@ -39,7 +39,6 @@ public class JorgePlayerController : MonoBehaviour
             rb.velocity = new Vector2(-6, rb.velocity.y);
         }
 
-      
 
         if(Input.GetKey("w") && grounded)
         {
