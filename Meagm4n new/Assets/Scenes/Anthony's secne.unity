@@ -1453,11 +1453,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carson
       objectReference: {fileID: 0}
-    - target: {fileID: 865083302478056029, guid: 605fbe2f379757445bb26d4aff93b338,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 865083302478056030, guid: 605fbe2f379757445bb26d4aff93b338,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1512,16 +1507,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 865083302478056028, guid: 605fbe2f379757445bb26d4aff93b338,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 865083302478056028, guid: 605fbe2f379757445bb26d4aff93b338,
-        type: 3}
-      propertyPath: m_Constraints
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5299738995006121619, guid: 605fbe2f379757445bb26d4aff93b338,
         type: 3}
@@ -22803,11 +22788,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Joe
       objectReference: {fileID: 0}
-    - target: {fileID: 1761697102064480483, guid: 617f20ad5ec9c22468fe115848b9f381,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 1761697102064480504, guid: 617f20ad5ec9c22468fe115848b9f381,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22862,16 +22842,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761697102064480509, guid: 617f20ad5ec9c22468fe115848b9f381,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1761697102064480508, guid: 617f20ad5ec9c22468fe115848b9f381,
-        type: 3}
-      propertyPath: health
-      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 899014289382644627, guid: 617f20ad5ec9c22468fe115848b9f381,
         type: 3}
@@ -23506,11 +23476,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -6972779339966933907, guid: 16fffb4b8fbb9f94ba7c458f86a63c89,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 8625982}
     - target: {fileID: 5343311316624693350, guid: 16fffb4b8fbb9f94ba7c458f86a63c89,
         type: 3}
       propertyPath: m_Name
@@ -23571,6 +23536,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6972779339966933907, guid: 16fffb4b8fbb9f94ba7c458f86a63c89,
+        type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 8625982}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16fffb4b8fbb9f94ba7c458f86a63c89, type: 3}
 --- !u!1001 &1450666643
@@ -28510,45 +28480,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9050212151576578294, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9050212151576578294, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9050212151576578294, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9050212151576578184, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9050212151576578292, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
-        type: 3}
-      propertyPath: health
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 9050212151576578295, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 40c987cfc7ae5684fb929d1a59a3c563,
-        type: 3}
     - target: {fileID: 488447279, guid: cab0d0a679a3b1c43ac473bfefca6c9c, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 8625982}
-    - target: {fileID: 488447279, guid: cab0d0a679a3b1c43ac473bfefca6c9c, type: 3}
-      propertyPath: maxHealth
-      value: 100
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cab0d0a679a3b1c43ac473bfefca6c9c, type: 3}
 --- !u!1001 &1741682898
@@ -34832,15 +34767,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6466952019126222934, guid: 4447b0fd38bf77c46965e0ce08a67ce7,
-        type: 3}
-      propertyPath: maxHealth
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 7786843651217444950, guid: 4447b0fd38bf77c46965e0ce08a67ce7,
         type: 3}
       propertyPath: m_Name
       value: Dragon seeker
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466952019126222934, guid: 4447b0fd38bf77c46965e0ce08a67ce7,
+        type: 3}
+      propertyPath: maxHealth
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 7786843651217444944, guid: 4447b0fd38bf77c46965e0ce08a67ce7,
         type: 3}

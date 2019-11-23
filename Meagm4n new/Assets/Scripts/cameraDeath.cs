@@ -12,7 +12,6 @@ public class cameraDeath : MonoBehaviour
         if (Jorge != null)
         {
             Jorge.TakeDamage(Jorge.getMaxHealth());
-            return;
         }
     }
 }

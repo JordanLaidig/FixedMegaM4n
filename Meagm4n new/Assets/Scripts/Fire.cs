@@ -18,24 +18,21 @@ public class Fire : MonoBehaviour
     {
         Health enemy = collision.GetComponent<Health>();
 
-        if (enemy != null)
+        if (!collision.CompareTag("Player"))
         {
-            enemy.TakeDamage(damage);
-            Destroy(gameObject);
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+                Destroy(gameObject);
+            }
         }
-        
+
         if (collision.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
         }
         
         if (collision.gameObject.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-
-        }
-
-        if (collision.gameObject.CompareTag("Enemy"))
         {
             Destroy(gameObject);
 
