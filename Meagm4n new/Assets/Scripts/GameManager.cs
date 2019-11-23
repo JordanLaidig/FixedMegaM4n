@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      //  JorgeHP = 25;
+        JorgeHP = 25;
     //public int JohnsonHP;
     //public int JoeHP;
     //public int CarsonHP;
