@@ -7,7 +7,7 @@ public class LevelSelect : MonoBehaviour
 {
     public void LevelOne()
     {
-        SceneManager.LoadScene("JonathanGalon Scene");
+        SceneManager.LoadScene("level 1 main");
     }
     public void MainMenu()
     {

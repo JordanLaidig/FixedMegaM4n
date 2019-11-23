@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGaame()
     {
-        SceneManager.LoadScene("JonathanGalon Scene");
+        SceneManager.LoadScene("Level 1 main");
     }
 
     public void LevelSelect()

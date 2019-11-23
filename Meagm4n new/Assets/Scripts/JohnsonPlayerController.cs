@@ -64,7 +64,7 @@ public class JohnsonPlayerController : MonoBehaviour
         {
             //Cast ray down from player position a distance of 1, look only for tags in mask
             RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.down, 1, LayerMask.GetMask("Ground"));   
-            if(true/*hit.collider != null*/)    //Player hit ground tagged object, and ground is below therefore Player is on ground
+            if(hit.collider != null)    //Player hit ground tagged object, and ground is below therefore Player is on ground
             {
                 grounded = true;
                 onWall = false;
