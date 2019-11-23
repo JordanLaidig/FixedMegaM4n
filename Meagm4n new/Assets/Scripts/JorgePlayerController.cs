@@ -63,16 +63,23 @@ public class JorgePlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground"))  //Player hit a ground tagged object
         {
-            grounded = true;
-            onWall = false;
-        }
-        else if(collision.gameObject.CompareTag("Wall"))
-        {
-            onWall = true;
-            grounded = false;
-
+            //Cast ray down from player position a distance of 1, look only for tags in mask
+            RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.down, 1, LayerMask.GetMask("Ground"));   
+            if(true/*hit.collider != null*/)    //Player hit ground tagged object, and ground is below therefore Player is on ground
+            {
+                grounded = true;
+                onWall = false;
+            }  
+            else                        //Player hit ground tagged object, and no ground is below therefore Player is on wall
+            {
+                onWall = true;
+                grounded = false;
+            }
+                /*Debug Draw Ray*/
+            //Vector3 down = transform.TransformDirection(Vector3.down) * 1;
+            //Debug.DrawRay(rb.position, down, Color.green, 10, false);
         }
     }
 }
