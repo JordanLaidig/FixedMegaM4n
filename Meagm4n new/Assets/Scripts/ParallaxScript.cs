@@ -37,7 +37,7 @@ public class ParallaxScript : MonoBehaviour
 
     void InitializeParallax(float initX)
     {
-        Debug.Log("Init");
+        //Debug.Log("Init");
         if(!started){
             centerInitX = initX;
             started = true;
@@ -66,7 +66,7 @@ public class ParallaxScript : MonoBehaviour
         tempVector.x = newCentPosX*(-transform.position.z);
         transform.position = tempVector;//Change x position of object based on z position of object
 */
-        Debug.Log(transform.position);
+       // Debug.Log(transform.position);
 
         //lastCentPosX = newCentPosX;
     }
