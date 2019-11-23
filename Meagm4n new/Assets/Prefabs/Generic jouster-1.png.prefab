@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5343311316624693348}
   - component: {fileID: 5343311316624693349}
   - component: {fileID: 5343311316624693345}
+  - component: {fileID: -6972779339966933907}
   m_Layer: 0
   m_Name: Generic jouster-1.png
   m_TagString: Untagged
@@ -90,6 +91,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -174,4 +176,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   groundDetection: {fileID: 5343311316233183286}
-  health: 100
+--- !u!114 &-6972779339966933907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5343311316624693350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4735651068e4464f8f0837ee56943c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 2824744742371908731, guid: f27fbe2bd49fd314fb1b4a4e4c129c08, type: 3}
+  health: 0
+  maxHealth: 60

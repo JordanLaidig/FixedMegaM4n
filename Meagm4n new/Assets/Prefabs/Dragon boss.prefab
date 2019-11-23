@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 457190473}
   - component: {fileID: 457190475}
   - component: {fileID: 457190476}
+  - component: {fileID: 719807581}
   m_Layer: 0
   m_Name: Dragon boss
   m_TagString: Untagged
@@ -187,6 +188,7 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -317,8 +319,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42596b64a90eb5b46a5169f44f6ed904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  threshold: 150
 --- !u!114 &457190476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -335,3 +335,18 @@ MonoBehaviour:
   DragonBossFirePreFab: {fileID: 968298512197386013, guid: 1fada97b2421f674699ec742cf9efcb4,
     type: 3}
   timer: 3
+--- !u!114 &719807581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2620655925368261987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4735651068e4464f8f0837ee56943c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 2824744742371908731, guid: f27fbe2bd49fd314fb1b4a4e4c129c08, type: 3}
+  health: 0
+  maxHealth: 1000

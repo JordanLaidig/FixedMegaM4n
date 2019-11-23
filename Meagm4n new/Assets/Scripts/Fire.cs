@@ -16,28 +16,29 @@ public class Fire : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        JousterAi enemy = collision.GetComponent<JousterAi>();
+        Health enemy = collision.GetComponent<Health>();
+
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
             Destroy(gameObject);
         }
-
-        DragonBossController dragonBoss = collision.GetComponent<DragonBossController>();
-        if (dragonBoss != null)
-        {
-            dragonBoss.TakeDamage(damage);
-            Destroy(gameObject);
-        }
-        else if (collision.gameObject.CompareTag("Ground"))
+        
+        if (collision.gameObject.CompareTag("Ground"))
         {
             Destroy(gameObject);
-        }
-        else if (collision.gameObject.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-
         }
         
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Destroy(gameObject);
+
+        }
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+
+        }
     }
 }

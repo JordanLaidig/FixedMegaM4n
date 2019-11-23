@@ -8,7 +8,7 @@ public class JohnsonPlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2d;
-    public Health health;
+    Health health;
     JohnsonBar bar;
     Transform direction;
 
@@ -28,9 +28,6 @@ public class JohnsonPlayerController : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        bar.game.JohnsonHP = health.getHealth();
-        print(bar.game.JohnsonHP.ToString());
-
         if (Input.GetKey("h"))
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
@@ -67,7 +64,7 @@ public class JohnsonPlayerController : MonoBehaviour
         {
             //Cast ray down from player position a distance of 1, look only for tags in mask
             RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.down, 1, LayerMask.GetMask("Ground"));   
-            if(true/*hit.collider != null*/)    //Player hit ground tagged object, and ground is below therefore Player is on ground
+            if(hit.collider != null)    //Player hit ground tagged object, and ground is below therefore Player is on ground
             {
                 grounded = true;
                 onWall = false;
