@@ -26,15 +26,13 @@ public class DragonSeekerController : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 0, 90);
         }
-
-        timer -= Time.deltaTime;
-        if (timer <= 0)
+        if (death)
         {
-            timer = 2f;
-        }
-        if(timer < 1 && death)
-        {
-            Destroy(gameObject);
+            timer -= Time.deltaTime;
+            if(timer <= 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
