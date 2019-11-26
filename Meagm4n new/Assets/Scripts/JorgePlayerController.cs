@@ -8,7 +8,7 @@ public class JorgePlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2d;
-    JorgeBar bar;
+    public JorgeBar bar;
     Health health;
     Transform direction;
     GameManager game;
@@ -23,11 +23,12 @@ public class JorgePlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         direction = GetComponent<Transform>();
+      
     }
 
     private void FixedUpdate()
     {
-
+        
         if (Input.GetKey("d"))
         {
             transform.eulerAngles = new Vector3(0, 0, 0);

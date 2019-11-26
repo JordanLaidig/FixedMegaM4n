@@ -29,9 +29,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (targets.Count == 0)
-            return;
-        
+        if (targets.Count == 0) {
+            Debug.Log("GameOver");
+           return;
+    }
         if(movable)
             Move();
 

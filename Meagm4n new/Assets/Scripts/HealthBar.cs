@@ -7,6 +7,7 @@ public class HealthBar : MonoBehaviour
 {
     GameManager game;
     Image health;
+    public Health Jorge;
     void Start()
     {
         health = GameObject.Find("Content").GetComponent<Image>();
@@ -16,6 +17,6 @@ public class HealthBar : MonoBehaviour
 
     public void FixedUpdate()
     {
-        health.fillAmount = game.JorgeHP / 100f;
+        health.fillAmount = Jorge.getHealth() / 100f;
     }
 }
