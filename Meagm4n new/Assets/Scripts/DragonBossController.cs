@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DragonBossController : MonoBehaviour
 {
 
@@ -14,8 +15,6 @@ public class DragonBossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
-
+        
     }
 }

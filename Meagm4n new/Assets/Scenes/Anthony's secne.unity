@@ -28428,12 +28428,12 @@ PrefabInstance:
     - target: {fileID: 9050212151576578294, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -243.59
+      value: -252
       objectReference: {fileID: 0}
     - target: {fileID: 9050212151576578294, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.95
+      value: -24.5
       objectReference: {fileID: 0}
     - target: {fileID: 9050212151576578294, guid: cab0d0a679a3b1c43ac473bfefca6c9c,
         type: 3}
@@ -34772,11 +34772,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dragon seeker
       objectReference: {fileID: 0}
-    - target: {fileID: 6466952019126222934, guid: 4447b0fd38bf77c46965e0ce08a67ce7,
-        type: 3}
-      propertyPath: maxHealth
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 7786843651217444944, guid: 4447b0fd38bf77c46965e0ce08a67ce7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -34847,5 +34842,15 @@ PrefabInstance:
       propertyPath: newsprite
       value: 
       objectReference: {fileID: 2800000, guid: 9d7022565cbbbcb49a0c9a5fbbca3592, type: 3}
+    - target: {fileID: 7786843651217444909, guid: 4447b0fd38bf77c46965e0ce08a67ce7,
+        type: 3}
+      propertyPath: timer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466952019126222934, guid: 4447b0fd38bf77c46965e0ce08a67ce7,
+        type: 3}
+      propertyPath: maxHealth
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4447b0fd38bf77c46965e0ce08a67ce7, type: 3}

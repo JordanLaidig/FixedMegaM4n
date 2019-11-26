@@ -221,6 +221,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   playerDetector: {fileID: 7786843651502771433}
+  explosion: {fileID: 21300000, guid: 9d7022565cbbbcb49a0c9a5fbbca3592, type: 3}
+  timer: 1
+  death: 0
 --- !u!114 &6466952019126222934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 2824744742371908731, guid: f27fbe2bd49fd314fb1b4a4e4c129c08, type: 3}
   health: 0
-  maxHealth: 20
+  maxHealth: 30
 --- !u!1 &7786843651502771438
 GameObject:
   m_ObjectHideFlags: 0
