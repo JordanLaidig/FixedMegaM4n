@@ -6,7 +6,10 @@ public class DragonSeekerController : MonoBehaviour
 {
     public float speed;
     public Transform playerDetector;
-    public Texture newsprite;
+    public Sprite explosion;
+    public float timer = 2f;
+    public bool death = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -23,8 +26,16 @@ public class DragonSeekerController : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 0, 90);
         }
-
+        if (death)
+        {
+            timer -= Time.deltaTime;
+            if(timer <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ground"))
@@ -35,8 +46,9 @@ public class DragonSeekerController : MonoBehaviour
 
     void explode()
     {
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = explosion;
         var collisions = Physics2D.CircleCastAll(gameObject.transform.position, 2.5f , Vector2.zero);
-        foreach(var c in collisions)
+        foreach (var c in collisions)
         {
             if (c.collider.gameObject.CompareTag("Player"))
             {
@@ -47,7 +59,9 @@ public class DragonSeekerController : MonoBehaviour
                 }
             }
         }
-        Destroy(gameObject);
+        death = true;
     }
+    
+    
 
 }
