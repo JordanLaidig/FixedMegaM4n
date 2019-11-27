@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class JorgeHP : MonoBehaviour
 {
     GameManager game;
     Image health;
@@ -11,8 +11,6 @@ public class HealthBar : MonoBehaviour
     void Start()
     {
         health = GameObject.Find("Content").GetComponent<Image>();
-        game.JorgeHP = 25;
-        health.fillAmount = 20f;
     }
 
     public void FixedUpdate()

@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JohnsonText : MonoBehaviour
+public class JoeText : MonoBehaviour
 {
-    Text JohnsonT;
+    Text JoeT;
     GameManager game;
-    public Health Johnson;
+    public Health Joe;
     // Start is called before the first frame update
     void Start()
     {
-        JohnsonT = GetComponent<Text>();
+        JoeT = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        JohnsonT.text = Johnson.getHealth().ToString();
+        JoeT.text = Joe.getHealth().ToString();
     }
 }
