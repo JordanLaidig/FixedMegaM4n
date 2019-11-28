@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class JohnsonText : MonoBehaviour
+public class CarsonText : MonoBehaviour
 {
-    Text JohnsonT;
+    Text CarsonT;
     GameManager game;
-    public Health Johnson;
+    public Health Carson;
     // Start is called before the first frame update
     void Start()
     {
-        JohnsonT = GetComponent<Text>();
+        CarsonT = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        JohnsonT.text = Johnson.getHealth().ToString();
+        CarsonT.text = Carson.getHealth().ToString();
     }
 }

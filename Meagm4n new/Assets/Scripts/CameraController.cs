@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CameraController : MonoBehaviour
 {
     public List<Transform> targets;
@@ -29,9 +29,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (targets.Count == 0)
-            return;
-        
+        if (targets.Count == 0) {
+            Debug.Log("GameOver");
+           return;
+    }
         if(movable)
             Move();
 

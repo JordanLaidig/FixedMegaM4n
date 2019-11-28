@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour
+public class CarsonHP : MonoBehaviour
 {
     GameManager game;
     Image health;
+    public Health Carson;
     void Start()
     {
-        health = GameObject.Find("Content").GetComponent<Image>();
-        game.JorgeHP = 25;
-        health.fillAmount = 20f;
+        health = GameObject.Find("ContentCarson").GetComponent<Image>();
     }
 
     public void FixedUpdate()
     {
-        health.fillAmount = game.JorgeHP / 100f;
+        health.fillAmount = Carson.getHealth() / 100f;
     }
 }

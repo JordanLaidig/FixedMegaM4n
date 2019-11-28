@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JonathanGalon Scene.unity
     guid: 8e847b199a45f0449af0d20b63819bf9
+  - enabled: 1
+    path: Assets/Scenes/JonathanGalon Scene2.unity
+    guid: 398d82663b7288045b3b8ca1d1906162
   m_configObjects: {}
