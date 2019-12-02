@@ -40,10 +40,12 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene("JonathanGalon Scene3");
+        Time.timeScale = 1f;
     }
 
     public void QuitGame()
     {
         SceneManager.LoadScene("JonathanGalon Scene2");
+        Time.timeScale = 1f;
     }
 }
