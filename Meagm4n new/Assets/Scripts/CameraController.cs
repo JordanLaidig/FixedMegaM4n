@@ -9,7 +9,8 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     public bool movable = true;
     private Vector3 velocity;
-    
+    public GameObject gameOverUI;
+
     //Parallax stuff
     public delegate void ParallaxEvent(float xfloat);
     public static event ParallaxEvent ParallaxUpdate;
@@ -30,9 +31,9 @@ public class CameraController : MonoBehaviour
     void LateUpdate()
     {
         if (targets.Count == 0) {
-            Debug.Log("GameOver");
+            gameOverUI.SetActive(true);
            return;
-    }
+        }
         if(movable)
             Move();
 
