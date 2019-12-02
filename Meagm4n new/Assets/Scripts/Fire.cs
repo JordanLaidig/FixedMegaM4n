@@ -17,8 +17,7 @@ public class Fire : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Health enemy = collision.GetComponent<Health>();
-
-        if (!collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player") && !collision.isTrigger)
         {
             if (enemy != null)
             {
