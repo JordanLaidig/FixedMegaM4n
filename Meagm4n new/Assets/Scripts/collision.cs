@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class collision : MonoBehaviour
 {
+    public CameraController cam;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.GetComponent<Rigidbody2D>().velocity.y >= 0)
+        if (collision.CompareTag("Player"))
         {
-            GetComponent<BoxCollider2D>().isTrigger = false; 
+            cam.movable = true;
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
+        if (collision.CompareTag("Player"))
+        {
+            cam.movable = false;
+        }
     }
 }

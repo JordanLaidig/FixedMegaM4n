@@ -11,7 +11,7 @@ public class collisionTop : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            cam.GetComponent<CameraController>().movable = false;
+            cam.GetComponent<BoxCollider2D>().isTrigger = false;
         }
     }
 
@@ -19,7 +19,7 @@ public class collisionTop : MonoBehaviour
     {
         if(collision.GetComponent<Rigidbody2D>().velocity.y < 0)
         {
-            cam.GetComponent<CameraController>().movable = true;
+            cam.GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
 }
