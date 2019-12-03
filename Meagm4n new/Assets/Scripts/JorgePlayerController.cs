@@ -12,6 +12,7 @@ public class JorgePlayerController : MonoBehaviour
     Health health;
     Transform direction;
     GameManager game;
+    private int kb;
 
     private bool hasJumped = false;
 
@@ -22,38 +23,48 @@ public class JorgePlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         direction = GetComponent<Transform>();
-      
+        kb = 0;
     }
-
+    public void knockback()
+    {
+        kb = 40;
+    }
+    private void Update()
+    {
+        if (kb > 0)
+            kb--;
+    }
     private void FixedUpdate()
     {
-        
-        if (Input.GetKey("d"))
+        if (kb == 0)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x+(rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
-        }
-        else if (Input.GetKey("a"))
-        {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2((onGround() ? -6: rb.velocity.x+(rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
-        }
+            if (Input.GetKey("d"))
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x + (rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
+            }
+            else if (Input.GetKey("a"))
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                rb.velocity = new Vector2((onGround() ? -6 : rb.velocity.x + (rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
+            }
 
 
-        if(Input.GetKey("w") && (onGround() || !hasJumped))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 19);
-            hasJumped = true;
-        }
-        else if(Input.GetKey("w") && onWall() && direction.rotation.y == 0)
-        {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2(-6, 20);
-        }
-        else if(Input.GetKey("w") && onWall() && direction.rotation.y != 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2(6, 20);
+            if (Input.GetKey("w") && (onGround() || !hasJumped))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 19);
+                hasJumped = true;
+            }
+            else if (Input.GetKey("w") && onWall() && direction.rotation.y == 0)
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                rb.velocity = new Vector2(-6, 20);
+            }
+            else if (Input.GetKey("w") && onWall() && direction.rotation.y != 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                rb.velocity = new Vector2(6, 20);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -74,3 +85,4 @@ public class JorgePlayerController : MonoBehaviour
         return hit.collider != null ? true : false;
     }
 }
+

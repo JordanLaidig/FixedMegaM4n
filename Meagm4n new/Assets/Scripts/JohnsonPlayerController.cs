@@ -11,6 +11,7 @@ public class JohnsonPlayerController : MonoBehaviour
     Health health;
     JohnsonBar bar;
     Transform direction;
+    private int kb;
 
     private bool hasJumped = false;
 
@@ -21,38 +22,49 @@ public class JohnsonPlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         direction = GetComponent<Transform>();
-
+        kb = 0;
     }
-
+    public void knockback()
+    {
+        kb = 40;
+    }
+    private void Update()
+    {
+        if (kb > 0)
+            kb--;
+    }
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (Input.GetKey("h"))
+        if (kb == 0)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x+(rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
-        }
-        else if (Input.GetKey("f"))
-        {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2((onGround() ? -6: rb.velocity.x+(rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
-        }
+            if (Input.GetKey("h"))
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x + (rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
+            }
+            else if (Input.GetKey("f"))
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                rb.velocity = new Vector2((onGround() ? -6 : rb.velocity.x + (rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
+            }
 
 
-        if(Input.GetKey("t") && (onGround() || !hasJumped))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 19);
-            hasJumped = true;
-        }
-        else if(Input.GetKey("t") && onWall() && direction.rotation.y == 0)
-        {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2(-6, 20);
-        }
-        else if(Input.GetKey("t") && onWall() && direction.rotation.y != 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2(6, 20);
+            if (Input.GetKey("t") && (onGround() || !hasJumped))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 19);
+                hasJumped = true;
+            }
+            else if (Input.GetKey("t") && onWall() && direction.rotation.y == 0)
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                rb.velocity = new Vector2(-6, 20);
+            }
+            else if (Input.GetKey("t") && onWall() && direction.rotation.y != 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                rb.velocity = new Vector2(6, 20);
+            }
         }
     }
 
@@ -74,3 +86,4 @@ public class JohnsonPlayerController : MonoBehaviour
         return hit.collider != null ? true : false;
     }
 }
+

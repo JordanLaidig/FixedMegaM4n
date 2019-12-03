@@ -174,8 +174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d969ada3c5cc044aa7222ffeb4a6a1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  target: {fileID: 0}
+  speed: 2
+  rb: {fileID: 0}
   groundDetection: {fileID: 5343311316233183286}
+  thrust: 0
 --- !u!114 &-6972779339966933907
 MonoBehaviour:
   m_ObjectHideFlags: 0

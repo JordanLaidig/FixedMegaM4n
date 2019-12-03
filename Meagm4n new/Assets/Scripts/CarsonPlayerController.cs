@@ -1,3 +1,4 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class CarsonPlayerController : MonoBehaviour
     BoxCollider2D boxCollider2d;
     Health health;
     Transform direction;
+    private int kb;
 
     private bool hasJumped = false;
 
@@ -21,39 +23,48 @@ public class CarsonPlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         direction = GetComponent<Transform>();
-
+        kb = 0;
     }
-
+    public void knockback()
+    {
+        kb = 40;
+    }
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if (kb == 0)
+        {
+            if (Input.GetKey("l"))
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x + (rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
+            }
+            else if (Input.GetKey("j"))
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                rb.velocity = new Vector2((onGround() ? -6 : rb.velocity.x + (rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
+            }
 
-        if (Input.GetKey("l"))
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x+(rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
-        }
-        else if (Input.GetKey("j"))
-        {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2((onGround() ? -6: rb.velocity.x+(rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
-        }
 
-
-        if(Input.GetKey("i") && (onGround() || !hasJumped))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 19);
-            hasJumped = true;
+            if (Input.GetKey("i") && (onGround() || !hasJumped))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 19);
+                hasJumped = true;
+            }
+            else if (Input.GetKey("i") && onWall() && direction.rotation.y == 0)
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                rb.velocity = new Vector2(-6, 20);
+            }
+            else if (Input.GetKey("i") && onWall() && direction.rotation.y != 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                rb.velocity = new Vector2(6, 20);
+            }
         }
-        else if(Input.GetKey("i") && onWall() && direction.rotation.y == 0)
+        else if (kb > 0)
         {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2(-6, 20);
-        }
-        else if(Input.GetKey("i") && onWall() && direction.rotation.y != 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2(6, 20);
+            kb--;
         }
         
     }

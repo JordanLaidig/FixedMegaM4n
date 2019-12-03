@@ -10,6 +10,7 @@ public class JoePlayerController : MonoBehaviour
     BoxCollider2D boxCollider2d;
     Health health;
     Transform direction;
+    private int kb;
 
     private bool hasJumped = false;
 
@@ -20,39 +21,50 @@ public class JoePlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         direction = GetComponent<Transform>();
-
+        kb = 0;
     }
-
+    private void Update()
+    {
+        if (kb > 0)
+            kb--;
+    }
     // Update is called once per frame
     private void FixedUpdate()
     {
-        if (Input.GetKey("right"))
+        if (kb == 0)
         {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x+(rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
-        }
-        else if (Input.GetKey("left"))
-        {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2((onGround() ? -6: rb.velocity.x+(rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
-        }
+            if (Input.GetKey("right"))
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x + (rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
+            }
+            else if (Input.GetKey("left"))
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                rb.velocity = new Vector2((onGround() ? -6 : rb.velocity.x + (rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
+            }
 
 
-        if(Input.GetKey("up") && (onGround() || !hasJumped))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, 19);
-            hasJumped = true;
+            if (Input.GetKey("up") && (onGround() || !hasJumped))
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 19);
+                hasJumped = true;
+            }
+            else if (Input.GetKey("up") && onWall() && direction.rotation.y == 0)
+            {
+                transform.eulerAngles = new Vector3(0, -180, 0);
+                rb.velocity = new Vector2(-6, 20);
+            }
+            else if (Input.GetKey("up") && onWall() && direction.rotation.y != 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                rb.velocity = new Vector2(6, 20);
+            }
         }
-        else if(Input.GetKey("up") && onWall() && direction.rotation.y == 0)
-        {
-            transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2(-6, 20);
-        }
-        else if(Input.GetKey("up") && onWall() && direction.rotation.y != 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2(6, 20);
-        }
+    }
+    public void knockback()
+    {
+        kb = 40;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

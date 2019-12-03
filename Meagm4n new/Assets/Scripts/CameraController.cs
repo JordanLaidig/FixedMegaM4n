@@ -9,6 +9,8 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     public bool movable = true;
     private Vector3 velocity;
+    public Camera cam;
+    
     public GameObject gameOverUI;
 
     //Parallax stuff
@@ -22,6 +24,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = GetComponent<Camera>();
         Vector3 tempCenterPoint = GetCenterPoint();
         if(ParallaxInitiate != null)
             ParallaxInitiate(tempCenterPoint.x);
@@ -34,9 +37,11 @@ public class CameraController : MonoBehaviour
             gameOverUI.SetActive(true);
            return;
         }
-        if(movable)
-            Move();
 
+        if (movable)
+        {
+            Move();
+        }
        
     }
 
@@ -50,6 +55,17 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
                                                                 
 
+    }
+
+    float getGreatestDistance()
+    {
+        var bounds = new Bounds(targets[0].position, Vector3.zero);
+        foreach (Transform t in targets)
+        {
+            bounds.Encapsulate(t.position);
+        }
+
+        return bounds.size.x;
     }
 
     public Vector3 GetCenterPoint()
@@ -74,12 +90,17 @@ public class CameraController : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             GetComponent<BoxCollider2D>().isTrigger = false;
+            movable = false;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            movable = true;
+        }
     }
 
 }

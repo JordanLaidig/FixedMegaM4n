@@ -7,11 +7,13 @@ public class cameraDeath : MonoBehaviour
     Health Jorge;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        Jorge = collision.GetComponent<Health>();
-        if (Jorge != null)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Jorge.TakeDamage(Jorge.getMaxHealth());
+            Jorge = collision.GetComponent<Health>();
+            if (Jorge != null)
+            {
+                Jorge.TakeDamage(Jorge.getMaxHealth());
+            }
         }
     }
 }

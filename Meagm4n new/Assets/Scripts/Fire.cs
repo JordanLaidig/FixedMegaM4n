@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,16 +14,10 @@ public class Fire : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
-    public void changeDamage(int dam)
-    {
-        damage = dam;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Health enemy = collision.GetComponent<Health>();
-
-        if (!collision.CompareTag("Player"))
+        if (!collision.CompareTag("Player") && !collision.isTrigger)
         {
             if (enemy != null)
             {
