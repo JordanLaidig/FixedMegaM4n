@@ -6,6 +6,7 @@ public class JorgeBar : MonoBehaviour
 {
     public Transform bar;
     public GameManager game;
+    public Health Jorge;
     void Start()
     {
         bar = transform.Find("JorgeHBar");
@@ -18,6 +19,6 @@ public class JorgeBar : MonoBehaviour
     }
     public void FixedUpdate()
     {
-        SetSize(game.JorgeHP * .01f);
+        SetSize(Jorge.getHealth() * .01f);
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CameraController : MonoBehaviour
 {
     public List<Transform> targets;
@@ -9,7 +9,8 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     public bool movable = true;
     private Vector3 velocity;
-    
+    public GameObject gameOverUI;
+
     //Parallax stuff
     public delegate void ParallaxEvent(float xfloat);
     public static event ParallaxEvent ParallaxUpdate;
@@ -29,9 +30,10 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (targets.Count == 0)
-            return;
-        
+        if (targets.Count == 0) {
+            gameOverUI.SetActive(true);
+           return;
+        }
         if(movable)
             Move();
 

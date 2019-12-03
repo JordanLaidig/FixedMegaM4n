@@ -1,3 +1,4 @@
+
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,11 +28,6 @@ public class CarsonPlayerController : MonoBehaviour
     public void knockback()
     {
         kb = 40;
-    }
-    private void Update()
-    {
-        if (kb > 0)
-            kb--;
     }
     // Update is called once per frame
     private void FixedUpdate()
@@ -65,6 +61,10 @@ public class CarsonPlayerController : MonoBehaviour
                 transform.eulerAngles = new Vector3(0, 0, 0);
                 rb.velocity = new Vector2(6, 20);
             }
+        }
+        else if (kb > 0)
+        {
+            kb--;
         }
         
     }

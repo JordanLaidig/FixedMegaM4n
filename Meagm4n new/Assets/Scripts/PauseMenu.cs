@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -38,11 +39,13 @@ public class PauseMenu : MonoBehaviour
 
     public void LoadMenu()
     {
-        Debug.Log("Loading Menu");
+        SceneManager.LoadScene("JonathanGalon Scene3");
+        Time.timeScale = 1f;
     }
 
     public void QuitGame()
     {
-        Debug.Log("Qutting Game");
+        SceneManager.LoadScene("JonathanGalon Scene2");
+        Time.timeScale = 1f;
     }
 }
