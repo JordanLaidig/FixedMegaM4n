@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameManager game;
+    Image health;
     void Start()
     {
-        
+        health = GameObject.Find("Content").GetComponent<Image>();
+        game.JorgeHP = 25;
+        health.fillAmount = 20f;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FixedUpdate()
     {
-        
+        health.fillAmount = game.JorgeHP / 100f;
     }
 }

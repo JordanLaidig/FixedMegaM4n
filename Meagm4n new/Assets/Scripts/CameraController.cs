@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class CameraController : MonoBehaviour
 {
     public List<Transform> targets;
@@ -9,12 +9,10 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     public bool movable = true;
     private Vector3 velocity;
-    float minZoom = 170f;
-    float maxZoom = 160f;
-    float Zoomlimiter = 50f;
     public Camera cam;
     
-    
+    public GameObject gameOverUI;
+
     //Parallax stuff
     public delegate void ParallaxEvent(float xfloat);
     public static event ParallaxEvent ParallaxUpdate;
@@ -35,21 +33,16 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (targets.Count == 0)
-            return;
+        if (targets.Count == 0) {
+            gameOverUI.SetActive(true);
+           return;
+        }
 
         if (movable)
         {
             Move();
-            Zoom();
         }
        
-    }
-
-    void Zoom()
-    {
-        float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / Zoomlimiter);
-        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
     }
 
     void Move()
@@ -97,12 +90,17 @@ public class CameraController : MonoBehaviour
         if(collision.CompareTag("Player"))
         {
             GetComponent<BoxCollider2D>().isTrigger = false;
+            movable = false;
         }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        GetComponent<BoxCollider2D>().isTrigger = true;
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GetComponent<BoxCollider2D>().isTrigger = true;
+            movable = true;
+        }
     }
 
 }

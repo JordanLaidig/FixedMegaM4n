@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class JohnsonText : MonoBehaviour
 {
-    public static int JohnsonTextHP = 100;
     Text JohnsonT;
     GameManager game;
+    public Health Johnson;
     // Start is called before the first frame update
     void Start()
     {
         JohnsonT = GetComponent<Text>();
     }
-   
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        JohnsonT.text = game.JohnsonHP.ToString();
+        JohnsonT.text = Johnson.getHealth().ToString();
     }
 }

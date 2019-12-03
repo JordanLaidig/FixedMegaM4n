@@ -8,12 +8,12 @@ public class JorgePlayerController : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider2d;
-    JorgeBar bar;
+    public JorgeBar bar;
     Health health;
     Transform direction;
+    GameManager game;
 
-    bool grounded = true;
-    bool onWall = false;
+    private bool hasJumped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -22,57 +22,55 @@ public class JorgePlayerController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         direction = GetComponent<Transform>();
+      
     }
 
-    // Update is called once per frame
     private void FixedUpdate()
     {
-
+        
         if (Input.GetKey("d"))
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
-            rb.velocity = new Vector2(6, rb.velocity.y);
+            rb.velocity = new Vector2((onGround() ? 6 : rb.velocity.x+(rb.velocity.x < 6 ? 0.5F : 0)), rb.velocity.y);
         }
         else if (Input.GetKey("a"))
         {
             transform.eulerAngles = new Vector3(0, -180, 0);
-            rb.velocity = new Vector2(-6, rb.velocity.y);
+            rb.velocity = new Vector2((onGround() ? -6: rb.velocity.x+(rb.velocity.x > -6 ? -0.5F : 0)), rb.velocity.y);
         }
 
-      
 
-        if(Input.GetKey("w") && grounded)
+        if(Input.GetKey("w") && (onGround() || !hasJumped))
         {
-            rb.velocity = new Vector2(rb.velocity.x, 20);
-            grounded = false;
-            onWall = false;
+            rb.velocity = new Vector2(rb.velocity.x, 19);
+            hasJumped = true;
         }
-        else if(Input.GetKey("w") && onWall && direction.rotation.y == 0)
+        else if(Input.GetKey("w") && onWall() && direction.rotation.y == 0)
         {
             transform.eulerAngles = new Vector3(0, -180, 0);
             rb.velocity = new Vector2(-6, 20);
-            onWall = false;
         }
-        else if(Input.GetKey("w") && onWall && direction.rotation.y != 0)
+        else if(Input.GetKey("w") && onWall() && direction.rotation.y != 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
             rb.velocity = new Vector2(6, 20);
-            onWall = false;
         }
-        
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            grounded = true;
-            onWall = false;
-        }
-        else if(collision.gameObject.CompareTag("Wall"))
-        {
-            onWall = true;
-            grounded = false;
+        if (collision.gameObject.CompareTag("Ground"))  //Player hit a ground tagged object
+            hasJumped = false;
+    }
 
-        }
+    private bool onGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, Vector2.down, 1, LayerMask.GetMask("Ground"));   
+        return hit.collider != null ? true : false;
+    }
+
+    private bool onWall()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, (direction.rotation.y == 0 ? Vector2.right : Vector2.left), 1.5F, LayerMask.GetMask("Ground"));  
+        return hit.collider != null ? true : false;
     }
 }

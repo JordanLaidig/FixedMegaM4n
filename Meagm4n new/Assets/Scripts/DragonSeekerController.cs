@@ -6,12 +6,15 @@ public class DragonSeekerController : MonoBehaviour
 {
     public float speed;
     public Transform playerDetector;
+    public Sprite explosion;
+    public float timer = 2f;
+    public bool death = false;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Health health = GetComponent<Health>();
     }
 
     // Update is called once per frame
@@ -23,30 +26,29 @@ public class DragonSeekerController : MonoBehaviour
         {
             transform.eulerAngles = new Vector3(0, 0, 90);
         }
-
+        if (death)
+        {
+            timer -= Time.deltaTime;
+            if(timer <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Health health = collision.gameObject.GetComponent<Health>();
-            if(health != null)
-            {
-                health.TakeDamage(20);
-            }
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Ground"))
         {
             explode();
         }
-
     }
 
     void explode()
     {
-        var collisions = Physics2D.CircleCastAll(gameObject.transform.position, 5, transform.position);
-        foreach(var c in collisions)
+        this.gameObject.GetComponent<SpriteRenderer>().sprite = explosion;
+        var collisions = Physics2D.CircleCastAll(gameObject.transform.position, 2.5f , Vector2.zero);
+        foreach (var c in collisions)
         {
             if (c.collider.gameObject.CompareTag("Player"))
             {
@@ -57,7 +59,9 @@ public class DragonSeekerController : MonoBehaviour
                 }
             }
         }
-        Destroy(gameObject);
+        death = true;
     }
+    
+    
 
 }
