@@ -223,4 +223,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: -5
   rb: {fileID: 7251083009146097903}
-  damage: 0
+  direction: {fileID: 0}
+  damage: 20
+  timer: 2

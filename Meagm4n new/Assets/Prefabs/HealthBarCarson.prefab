@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8c3ab9d3b7d2a54dbf3e6ea99334878, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Carson: {fileID: 0}
+  Carson: {fileID: 5299738995006121619, guid: 605fbe2f379757445bb26d4aff93b338, type: 3}
 --- !u!1 &1033010771673376821
 GameObject:
   m_ObjectHideFlags: 0

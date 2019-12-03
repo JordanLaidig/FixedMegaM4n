@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f3221258b0a1614598b5bc2630465ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Johnson: {fileID: 0}
+  Johnson: {fileID: 1342371414776151661, guid: fe60108df8ea146429f5515d12101527, type: 3}
 --- !u!1 &3430437199522045927
 GameObject:
   m_ObjectHideFlags: 0

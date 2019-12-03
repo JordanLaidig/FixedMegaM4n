@@ -14,6 +14,11 @@ public class Fire : MonoBehaviour
         rb.velocity = transform.right * speed;
     }
 
+    public void changeDamage(int dam)
+    {
+        damage = dam;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Health enemy = collision.GetComponent<Health>();
