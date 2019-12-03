@@ -20,6 +20,7 @@ public class JousterAi : MonoBehaviour
     {
         xOriginal = transform.position.x;
         jouster = this.gameObject;
+        thrust = 300;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -37,25 +38,35 @@ public class JousterAi : MonoBehaviour
 
                     var knockBackDirection = collision.gameObject.GetComponent<Transform>().position;
                     rb = collision.gameObject.GetComponent<Rigidbody2D>();
-                    if (collision.gameObject.transform.position.x < transform.position.x)
+
+                    if ((collision.gameObject.transform.position.x < transform.position.x && collision.gameObject.transform.eulerAngles.y == 0) || (collision.gameObject.transform.position.x > transform.position.x && collision.gameObject.transform.eulerAngles.y == -180))
                     {
-                        collision.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
                         rb.AddForce(-collision.gameObject.transform.right * thrust);
                         rb.AddForce(collision.gameObject.transform.up * thrust);
                     }
                     else
                     {
-                        collision.gameObject.transform.eulerAngles = new Vector3(0, -180, 0);
-                        rb.AddForce(-collision.gameObject.transform.right * thrust);
+                        rb.AddForce(collision.gameObject.transform.right * thrust);
                         rb.AddForce(collision.gameObject.transform.up * thrust);
                     }
-
+                    JorgePlayerController jorge = gameObject.GetComponent<JorgePlayerController>();
+                    CarsonPlayerController carson = gameObject.GetComponent<CarsonPlayerController>();
+                    JoePlayerController joe = gameObject.GetComponent<JoePlayerController>();
+                    JohnsonPlayerController johnson = gameObject.GetComponent<JohnsonPlayerController>();
+                    if (jorge != null)
+                        jorge.knockback();
+                    if (carson != null)
+                        carson.knockback();
+                    if (joe != null)
+                        joe.knockback();
+                    if (johnson != null)
+                        johnson.knockback();
                 }
             }
         }
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
