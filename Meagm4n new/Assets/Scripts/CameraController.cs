@@ -9,6 +9,11 @@ public class CameraController : MonoBehaviour
     public Vector3 offset;
     public bool movable = true;
     private Vector3 velocity;
+    float minZoom = 170f;
+    float maxZoom = 160f;
+    float Zoomlimiter = 50f;
+    public Camera cam;
+    
     
     //Parallax stuff
     public delegate void ParallaxEvent(float xfloat);
@@ -21,6 +26,7 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        cam = GetComponent<Camera>();
         Vector3 tempCenterPoint = GetCenterPoint();
         if(ParallaxInitiate != null)
             ParallaxInitiate(tempCenterPoint.x);
@@ -31,11 +37,19 @@ public class CameraController : MonoBehaviour
     {
         if (targets.Count == 0)
             return;
-        
-        if(movable)
-            Move();
 
+        if (movable)
+        {
+            Move();
+            Zoom();
+        }
        
+    }
+
+    void Zoom()
+    {
+        float newZoom = Mathf.Lerp(maxZoom, minZoom, getGreatestDistance() / Zoomlimiter);
+        cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, newZoom, Time.deltaTime);
     }
 
     void Move()
@@ -48,6 +62,17 @@ public class CameraController : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
                                                                 
 
+    }
+
+    float getGreatestDistance()
+    {
+        var bounds = new Bounds(targets[0].position, Vector3.zero);
+        foreach (Transform t in targets)
+        {
+            bounds.Encapsulate(t.position);
+        }
+
+        return bounds.size.x;
     }
 
     public Vector3 GetCenterPoint()
